@@ -1,6 +1,6 @@
 # ai_algorithms_project
 Durham College AI Algorithms<br/>
-Machine Learning Sentiment Analysis<br/><br/>
+Machine Learning Sentiment Analysis and Key Phrase Extraction<br/><br/>
 By Michael Molnar<br/><br/><br/>
 
 Data Source:<br/>
