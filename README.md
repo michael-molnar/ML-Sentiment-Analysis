@@ -1,7 +1,7 @@
 # ai_algorithms_project
 Durham College AI Algorithms<br/>
 Machine Learning Sentiment Analysis<br/><br/>
-By Michael Molnar<br/>
+By Michael Molnar<br/><br/><br/>
 
 Data Source:<br/>
 Amazon Review Data (2018).  https://nijianmo.github.io/amazon/index.html
