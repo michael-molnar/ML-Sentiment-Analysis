@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>MMolnar Project</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+<style>
+body { 
+  width: 50%;
+  height:80%;
+  font-family: 'Helvetica';
+  background: #000;
+  color: #fff;
+  font-size: 12px;
+  text-align:center;
+  letter-spacing:1.4px;
+}
+
+.btn:hover {
+  background-color: black;
+  color: white;
+}
+</style>
+</head>
+
+<body>
+  <div class="login">
+	<h1>Predict Sentiment and Extract Key Phrases</h1>
+  <h3>Analyze Your Text Using Machine Learning</h3>
+  <br>
+  <br>
+  <h2>Get Sentiment Only</h2>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+    	<input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+  
+   <h2>Get Sentiment and Key Phrases</h2>
+   <form action="{{ url_for('predict_analyze')}}"method="post">
+      <input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict and Analyze</button>
+    </form>
+   <br>
+   {{your_text}}
+   <br>
+   <br>
+   <br>
+   <b>{{prediction_text }}</b>
+   <br>
+   <br>
+   {{neg_text}}
+   <br>
+   {{neu_text}}
+   <br>
+   {{pos_text}}
+
+   <br>
+   <br>
+   <b>{{analysis_text}}</b>
+   <br>
+   <br>
+   <img src={{url}}>
+
+   <!--<br>
+   {{analysis_text2}}
+   <br>
+   {{analysis_text3}}
+   <br>
+   {{analysis_text4}}
+   <br>
+   {{analysis_text5}}
+   <br>
+   {{analysis_text6}}
+   <br>
+   {{analysis_text7}}
+   <br>
+   {{analysis_text8}}
+   <br>
+   {{analysis_text9}}
+   <br>
+   {{analysis_text10}}
+   <br>
+   {{analysis_text11}}-->
+
+ </div>
+
+</body>
+</html>
