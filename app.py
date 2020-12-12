@@ -116,13 +116,14 @@ def predict():
     pos_prob = np.around(confidence[0][2]*100, 2)
 
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
-    pred_text2 = 'Probability for Negative: {}%'.format(neg_prob)
-    pred_text3 = 'Probability for Neutral: {}%'.format(neu_prob)
-    pred_text4 = 'Probability for Positive: {}%'.format(pos_prob)
+    head_text = 'Probabilities:'
+    pred_text2 = 'Positive: {}%'.format(pos_prob)
+    pred_text3 = 'Neutral: {}%'.format(neu_prob)
+    pred_text4 = 'Negative: {}%'.format(neg_prob)
 
     heights = [pos_prob, neu_prob, neg_prob]
     bars = ('Positive', 'Neutral', 'Negative')
-    fig = plt.figure()
+    fig = plt.figure(figsize=(4,3))
     ax = fig.add_subplot(111)
     ax = plt.bar(bars, heights, color=['gold', 'royalblue', 'tomato'])
     plt.tight_layout(pad=0)
@@ -130,8 +131,8 @@ def predict():
     new_graph_name = "graph" + str(time.time()) + ".png"
     plt.savefig('static/images/' + new_graph_name, bbox_inches='tight')
 
-    return render_template('index.html', your_text = input_text, prediction_text = pred_text1, neg_text = pred_text2, neu_text = pred_text3, 
-        pos_text = pred_text4, url='static/images/' + new_graph_name)
+    return render_template('index.html', your_text = input_text, prediction_text = pred_text1, bottom_header = head_text, neg_text = pred_text4, neu_text = pred_text3, 
+        pos_text = pred_text2, url='static/images/' + new_graph_name)
 
 if __name__ == '__main__':
 	app.run(debug=True)

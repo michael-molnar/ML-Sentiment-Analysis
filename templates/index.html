@@ -10,7 +10,7 @@
 <link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
 <style>
 body { 
-  width: 50%;
+  max-width:100%;
   height:80%;
   font-family: 'Helvetica';
   background: #000;
@@ -19,43 +19,50 @@ body {
   text-align:center;
   letter-spacing:1.4px;
 }
-img {
-  height: 50%;
-  width: 50%;
-}
-img.two {
-  height: 40%;
-  width: 40%;
-}
 .btn:hover {
   background-color: black;
   color: white;
+}
+.btn {
+  font-size: 20px;
+}
+.topimage {
+  width:40%;
 }
 </style>
 </head>
 
 <body>
   <div class="login">
-	<h1 style='font-size: 300%;'>Machine Learning Sentiment Predictor</h1>
+	<h1 style='font-size: 400%;'>Machine Learning Sentiment Predictor</h1>
   <br>
-  <img src = 'static/images/sentiment_image.png'>
+  <img src = 'static/images/sentiment_image.png' class='topimage'>
+    <center><div style="width: 800px; font-size: 200%; color:#4AA02C">Predict the sentiment of product or company reviews.</div></center>
+    <br>
+    <br>
     <form action="{{ url_for('predict')}}"method="post">
-    	<input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    <textarea id='your_text' name='your_text' placeholder="Enter Your Text Here" required="required" rows='10' cols='70'></textarea>
+    <br>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
     </form>
    <br>
-   {{your_text}}
+   <br>
+   <center><div style="width: 600px;">Your text:
+    <br>
+    <br>{{your_text}}</div></center>
+   <br>
+   <p style='font-size:200%; color:#4AA02C'>{{prediction_text }}</p>
+   <img src={{url}}>
+   <p style='font-size: 150%; color:#4AA02C'>
+   <br>
+   {{bottom_header}}
    <br>
    <br>
-   <p style='font-size:200%;'>{{prediction_text }}</p>
-   <p style='font-size: 150%;'><img class='two' src={{url}}>
-   <br>
-   <br>
-   {{neg_text}}
+   {{pos_text}}
    <br>
    {{neu_text}}
    <br>
-   {{pos_text}}
+   {{neg_text}}
    </p>
  </div>
 
