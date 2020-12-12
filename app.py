@@ -111,16 +111,27 @@ def predict():
     confidence = model.predict_proba(vec_text)
 
     output = prediction[0].upper()
-    neg_prop = np.around(confidence[0][0]*100, 2)
-    neu_prop = np.around(confidence[0][1]*100, 2)
-    pos_prop = np.around(confidence[0][2]*100, 2)
+    neg_prob = np.around(confidence[0][0]*100, 2)
+    neu_prob = np.around(confidence[0][1]*100, 2)
+    pos_prob = np.around(confidence[0][2]*100, 2)
 
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
-    pred_text2 = 'Probability for Negative: {}%'.format(neg_prop)
-    pred_text3 = 'Probability for Neutral: {}%'.format(neu_prop)
-    pred_text4 = 'Probability for Positive: {}%'.format(pos_prop)
+    pred_text2 = 'Probability for Negative: {}%'.format(neg_prob)
+    pred_text3 = 'Probability for Neutral: {}%'.format(neu_prob)
+    pred_text4 = 'Probability for Positive: {}%'.format(pos_prob)
 
-    return render_template('index.html', your_text = input_text, prediction_text = pred_text1, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4)
+    heights = [pos_prob, neu_prob, neg_prob]
+    bars = ('Positive', 'Neutral', 'Negative')
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    ax = plt.bar(bars, heights, color=['gold', 'royalblue', 'tomato'])
+    plt.tight_layout(pad=0)
+    
+    new_graph_name = "graph" + str(time.time()) + ".png"
+    plt.savefig('static/images/' + new_graph_name, bbox_inches='tight')
+
+    return render_template('index.html', your_text = input_text, prediction_text = pred_text1, neg_text = pred_text2, neu_text = pred_text3, 
+        pos_text = pred_text4, url='static/images/' + new_graph_name)
 
 if __name__ == '__main__':
 	app.run(debug=True)

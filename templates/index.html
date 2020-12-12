@@ -19,7 +19,14 @@ body {
   text-align:center;
   letter-spacing:1.4px;
 }
-
+img {
+  height: 50%;
+  width: 50%;
+}
+img.two {
+  height: 40%;
+  width: 40%;
+}
 .btn:hover {
   background-color: black;
   color: white;
@@ -29,10 +36,9 @@ body {
 
 <body>
   <div class="login">
-	<h1>Machine Learning Sentiment Predictor</h1>
+	<h1 style='font-size: 300%;'>Machine Learning Sentiment Predictor</h1>
   <br>
-  <br>
-       <!-- Main Input For Receiving Query to our ML -->
+  <img src = 'static/images/sentiment_image.png'>
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
@@ -41,8 +47,8 @@ body {
    {{your_text}}
    <br>
    <br>
-   <br>
-   <b>{{prediction_text }}</b>
+   <p style='font-size:200%;'>{{prediction_text }}</p>
+   <p style='font-size: 150%;'><img class='two' src={{url}}>
    <br>
    <br>
    {{neg_text}}
@@ -50,6 +56,7 @@ body {
    {{neu_text}}
    <br>
    {{pos_text}}
+   </p>
  </div>
 
 </body>
