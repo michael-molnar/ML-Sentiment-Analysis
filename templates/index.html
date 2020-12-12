@@ -29,22 +29,13 @@ body {
 
 <body>
   <div class="login">
-	<h1>Predict Sentiment and Extract Key Phrases</h1>
-  <h3>Analyze Your Text Using Machine Learning</h3>
+	<h1>Machine Learning Sentiment Predictor</h1>
   <br>
   <br>
-  <h2>Get Sentiment Only</h2>
-
-     <!-- Main Input For Receiving Query to our ML -->
+       <!-- Main Input For Receiving Query to our ML -->
     <form action="{{ url_for('predict')}}"method="post">
     	<input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
         <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
-    </form>
-  
-   <h2>Get Sentiment and Key Phrases</h2>
-   <form action="{{ url_for('predict_analyze')}}"method="post">
-      <input type="text" name="your_text" placeholder="Enter Your Text Here" required="required" size='100'/>
-        <button type="submit" class="btn btn-primary btn-block btn-large">Predict and Analyze</button>
     </form>
    <br>
    {{your_text}}
@@ -59,32 +50,6 @@ body {
    {{neu_text}}
    <br>
    {{pos_text}}
-
-   <br>
-   <br>
-   <b>{{analysis_text}}</b>
-   <br>
-   <br>
-   {{analysis_text2}}
-   <br>
-   {{analysis_text3}}
-   <br>
-   {{analysis_text4}}
-   <br>
-   {{analysis_text5}}
-   <br>
-   {{analysis_text6}}
-   <br>
-   {{analysis_text7}}
-   <br>
-   {{analysis_text8}}
-   <br>
-   {{analysis_text9}}
-   <br>
-   {{analysis_text10}}
-   <br>
-   {{analysis_text11}}
-
  </div>
 
 </body>

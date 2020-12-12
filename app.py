@@ -102,7 +102,7 @@ I want to use the model to generate few words and phrases.
 To do this I use the coefficients of hte model and the terms of the vectorizer.
 """
 # The coefficients for the negative class
-negative_coef = {
+"""negative_coef = {
     word: coef for word, coef in zip(
         vectorizer.get_feature_names(), model.coef_[0])
     }
@@ -119,7 +119,7 @@ positive_coef = {
         vectorizer.get_feature_names(), model.coef_[2])
     }
 
-
+"""
 
 
 @app.route('/')
@@ -146,7 +146,7 @@ def predict():
     pred_text4 = 'Probability for Positive: {}%'.format(pos_prop)
 
     return render_template('index.html', your_text = input_text, prediction_text = pred_text1, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4)
-
+"""
 @app.route('/predict_analyze', methods=['POST', 'GET'])
 def predict_analyze():
     input_text = request.form['your_text']
@@ -188,7 +188,7 @@ def predict_analyze():
     pred_text3 = 'Probability for Neutral: {}%'.format(neu_prop)
     pred_text4 = 'Probability for Positive: {}%'.format(pos_prop)
        
-    pred_text5 = 'Top Ten Phrases'
+    pred_text5 = 'Top Ten Phrases'"""
     #cloud = WordCloud(background_color='black').generate_from_frequencies(importances)
     #plt.figure(figsize=(6, 6), facecolor=None)
     #plt.imshow(cloud, interpolation="bilinear")
@@ -205,25 +205,25 @@ def predict_analyze():
 
 
     #plt.savefig('static\images\word_cloud.png', bbox_inches="tight")
-    
-    pred_text6 = importances[0][0]
-    pred_text7 = importances[1][0]
-    pred_text8 = importances[2][0]
-    pred_text9 = importances[3][0]
-    pred_text10 = importances[4][0]
-    pred_text11 = importances[5][0]
-    pred_text12 = importances[6][0]
-    pred_text13 = importances[7][0]
-    pred_text14 = importances[8][0]
-    pred_text15 = importances[9][0]
-    
-
-
-
-    return render_template('index.html', prediction_text = pred_text1, your_text = input_text, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4,
-        analysis_text = pred_text5, analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
-        analysis_text5 = pred_text9, analysis_text6 = pred_text10, analysis_text7 = pred_text11, analysis_text8 = pred_text12, analysis_text9 = pred_text13,
-        analysis_text10 = pred_text14, analysis_text11 = pred_text15)
+    """
+                pred_text6 = importances[0][0]
+                pred_text7 = importances[1][0]
+                pred_text8 = importances[2][0]
+                pred_text9 = importances[3][0]
+                pred_text10 = importances[4][0]
+                pred_text11 = importances[5][0]
+                pred_text12 = importances[6][0]
+                pred_text13 = importances[7][0]
+                pred_text14 = importances[8][0]
+                pred_text15 = importances[9][0]
+                
+            
+            
+            
+                return render_template('index.html', prediction_text = pred_text1, your_text = input_text, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4,
+                    analysis_text = pred_text5, analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
+                    analysis_text5 = pred_text9, analysis_text6 = pred_text10, analysis_text7 = pred_text11, analysis_text8 = pred_text12, analysis_text9 = pred_text13,
+                    analysis_text10 = pred_text14, analysis_text11 = pred_text15)"""
  #url='static/images/'#
 if __name__ == '__main__':
 	app.run(debug=True)
