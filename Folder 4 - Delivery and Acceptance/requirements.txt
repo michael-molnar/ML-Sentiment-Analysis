@@ -10,4 +10,6 @@ scikit-learn>=0.18
 matplotlib>=1.4.3
 pandas>=0.19
 regex--2020.6.8
-num2words==
+num2words==0.5.10
+nltk==3.5
+wordcloud==1.8.0
