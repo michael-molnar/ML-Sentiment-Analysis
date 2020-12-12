@@ -222,7 +222,7 @@ def predict_analyze():
 
 
     return render_template('index.html', prediction_text = pred_text1, your_text = input_text, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4,
-        analysis_text = pred_text5, + analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
+        analysis_text = pred_text5, analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
         analysis_text5 = pred_text9, analysis_text6 = pred_text10, analysis_text7 = pred_text11, analysis_text8 = pred_text12, analysis_text9 = pred_text13,
         analysis_text10 = pred_text14, analysis_text11 = pred_text15)
  #url='static/images/'#
