@@ -183,30 +183,30 @@ def predict_analyze():
             
     # Sort this dictionary according to its values
     importances = sorted(importances.items(), key=lambda x: x[1], reverse=True)
-    importances = dict(importances[:30])
+    importances = dict(importances[:20])
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
     pred_text2 = 'Probability for Negative: {}%'.format(neg_prop)
     pred_text3 = 'Probability for Neutral: {}%'.format(neu_prop)
     pred_text4 = 'Probability for Positive: {}%'.format(pos_prop)
        
-    pred_text5 = 'Top Thirty Phrases (Sized by Importance)'
-    cloud = WordCloud(background_color='black').generate_from_frequencies(importances)
-    plt.figure(figsize=(6, 6), facecolor=None)
-    plt.imshow(cloud, interpolation="bilinear")
-    plt.axis("off")
-    plt.tight_layout(pad=0)
+    pred_text5 = 'Top Ten Phrases'
+    #cloud = WordCloud(background_color='black').generate_from_frequencies(importances)
+    #plt.figure(figsize=(6, 6), facecolor=None)
+    #plt.imshow(cloud, interpolation="bilinear")
+    #plt.axis("off")
+    #plt.tight_layout(pad=0)
 
-    new_graph_name = "graph" + str(time.time()) + ".png"
+    #new_graph_name = "graph" + str(time.time()) + ".png"
 
     #for filename in os.listdir('static/images'):
      #   if filename.startswith('graph_'):  # not to remove other images
       #      os.remove('static/' + filename)
 
-    plt.savefig('static/images/' + new_graph_name, bbox_inches='tight')
+    #plt.savefig('static/images/' + new_graph_name, bbox_inches='tight')
 
 
     #plt.savefig('static\images\word_cloud.png', bbox_inches="tight")
-    """
+    
     pred_text6 = importances[0][0]
     pred_text7 = importances[1][0]
     pred_text8 = importances[2][0]
@@ -217,14 +217,14 @@ def predict_analyze():
     pred_text13 = importances[7][0]
     pred_text14 = importances[8][0]
     pred_text15 = importances[9][0]
-    """
+    
 
 
 
     return render_template('index.html', prediction_text = pred_text1, your_text = input_text, neg_text = pred_text2, neu_text = pred_text3, pos_text = pred_text4,
-        analysis_text = pred_text5, url='static/images/' + new_graph_name)#, analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
-        #analysis_text5 = pred_text9, analysis_text6 = pred_text10, analysis_text7 = pred_text11, analysis_text8 = pred_text12, analysis_text9 = pred_text13,
-        #analysis_text10 = pred_text14, analysis_text11 = pred_text15)
-
+        analysis_text = pred_text5, + , analysis_text2 = pred_text6, analysis_text3 = pred_text7, analysis_text4 = pred_text8, 
+        analysis_text5 = pred_text9, analysis_text6 = pred_text10, analysis_text7 = pred_text11, analysis_text8 = pred_text12, analysis_text9 = pred_text13,
+        analysis_text10 = pred_text14, analysis_text11 = pred_text15)
+ #url='static/images/'#
 if __name__ == '__main__':
 	app.run(debug=True)
