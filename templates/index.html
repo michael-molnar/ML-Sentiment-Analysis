@@ -32,9 +32,10 @@ body {
   border-radius: 15px;
   border:2px solid #fff;
   padding: 10px;
-  width:600px;
+  width:900px;
   background: transparent;
   color:#fff;
+  box-sizing: border-box;
 }
 .topimage {
   width:35%;
@@ -48,11 +49,13 @@ textarea {
   background: transparent;
   color: white;
   resize: none;
-  font-size: 120%;
+  font-size: 140%;
   max-width:100%;
   border-radius: 15px;
   border:2px solid #fff;
   padding: 13px;
+  width: 900px;
+  box-sizing: border-box;
 }
 </style>
 </head>
@@ -62,7 +65,7 @@ textarea {
 	<h1 style='font-size: 400%;'>Machine Learning Sentiment Predictor</h1>
   <img src = 'static/images/sentiment_image.png' class='topimage'>
     <form action="{{ url_for('predict')}}"method="post">
-    <textarea id='your_text' name='your_text' placeholder="Enter Your Text Here" required="required" rows='6' cols='50'></textarea>
+    <textarea id='your_text' name='your_text' placeholder="Enter Review Text Here" required="required" rows='6' cols='50'></textarea>
     <br>
     <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT SENTIMENT</button>
     </form>
