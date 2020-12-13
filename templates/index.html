@@ -35,7 +35,6 @@ body {
   width:600px;
   background: transparent;
   color:#fff;
-
 }
 .topimage {
   width:35%;
@@ -45,7 +44,7 @@ body {
   vertical-align: top;
   padding: 20px;
 }
-textarea{
+textarea {
   background: transparent;
   color: white;
   resize: none;
@@ -54,7 +53,6 @@ textarea{
   border-radius: 15px;
   border:2px solid #fff;
   padding: 13px;
-
 }
 </style>
 </head>
@@ -68,17 +66,16 @@ textarea{
     <br>
     <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT SENTIMENT</button>
     </form>
+   <center><div class = 'parent' style="width: 50%; font-size: 130%; text-align: justify; text-justify: inter-word;">
    <br>
-   <center><div class = 'parent' style="width: 60%;">
-    <br>
-    <br>{{your_text_header}}
-    <br>{{your_text}}</center>
+   <br><center><b>{{your_text_header}}</b></center>
+   <br>{{your_text}}</center>
    <br>
    <br>
    <div style='font-size:300%;'>{{prediction_text }}</div>
    <br>
    <div class='child inline-block-child'><img src={{url}}></div>
-   <div class="child inline-block-child" style='font-size: 150%; text-align:left'> 
+   <div class="child inline-block-child" style='font-size: 175%; text-align:left'> 
     <br>
     <br>
     <b>{{bottom_header}}</b>

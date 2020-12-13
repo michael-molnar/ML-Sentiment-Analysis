@@ -101,28 +101,32 @@ def process_input(text):
 @app.route('/')
 def home():
 	return render_template('index.html')
-
+# Define what will happen when the Predict Sentiment Button is pressed
 @app.route('/predict', methods=['POST'])
 def predict():
     input_text = request.form['your_text']
     processed_text = [process_input(input_text)]
+    #Vectorize text with previously fit Count Vectorizer
     vec_text = vectorizer.transform(processed_text)
 
+    # Generate predictions and probabilities
     prediction = model.predict(vec_text)
     confidence = model.predict_proba(vec_text)
 
+    # Define the output
     output = prediction[0].upper()
     neg_prob = np.around(confidence[0][0]*100, 2)
     neu_prob = np.around(confidence[0][1]*100, 2)
     pos_prob = np.around(confidence[0][2]*100, 2)
 
-    pred_text0 = 'Your text:'
+    pred_text0 = 'Your Text:'
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
     head_text = 'Probabilities:'
     pred_text2 = 'Positive:  {}%'.format(pos_prob)
     pred_text3 = 'Neutral:  {}%'.format(neu_prob)
     pred_text4 = 'Negative:  {}%'.format(neg_prob)
 
+    # Create a bar graph
     heights = [pos_prob, neu_prob, neg_prob]
     bars = ('Positive', 'Neutral', 'Negative')
     fig = plt.figure(figsize=(4,3))
@@ -130,6 +134,7 @@ def predict():
     ax = plt.bar(bars, heights, color=['gold', 'royalblue', 'tomato'])
     plt.tight_layout(pad=0)
     
+    # Delete previous graph and save this one with a unique timestamp in name
     new_graph_name = "graph" + str(time.time()) + ".png"
     for filename in os.listdir('static/images'):
         if filename.startswith('graph'): 
