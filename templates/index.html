@@ -23,19 +23,38 @@ body {
   letter-spacing:1.4px;
 }
 .btn:hover {
-  background-color: black;
+  background-color: #663399;
   color: white;
 }
 .btn {
   font-size: 20px;
+  max-width: 100%;
+  border-radius: 15px;
+  border:2px solid #fff;
+  padding: 10px;
+  width:600px;
+  background: transparent;
+  color:#fff;
+
 }
 .topimage {
-  width:30%;
+  width:35%;
 }
 .inline-block-child{
   display: inline-block;
   vertical-align: top;
   padding: 20px;
+}
+textarea{
+  background: transparent;
+  color: white;
+  resize: none;
+  font-size: 120%;
+  max-width:100%;
+  border-radius: 15px;
+  border:2px solid #fff;
+  padding: 13px;
+
 }
 </style>
 </head>
@@ -45,13 +64,14 @@ body {
 	<h1 style='font-size: 400%;'>Machine Learning Sentiment Predictor</h1>
   <img src = 'static/images/sentiment_image.png' class='topimage'>
     <form action="{{ url_for('predict')}}"method="post">
-    <textarea style='resize:none; font-size:120%;' id='your_text' name='your_text' placeholder="Enter Your Text Here" required="required" rows='8' cols='70'></textarea>
+    <textarea id='your_text' name='your_text' placeholder="Enter Your Text Here" required="required" rows='6' cols='50'></textarea>
     <br>
-    <button type="submit" class="btn btn-primary btn-block btn-large">Predict Sentiment</button>
+    <button type="submit" class="btn btn-primary btn-block btn-large">PREDICT SENTIMENT</button>
     </form>
    <br>
-   <center><div class = 'parent' style="width: 60%;">Your text:
+   <center><div class = 'parent' style="width: 60%;">
     <br>
+    <br>{{your_text_header}}
     <br>{{your_text}}</center>
    <br>
    <br>

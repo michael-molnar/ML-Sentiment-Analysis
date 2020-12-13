@@ -116,6 +116,7 @@ def predict():
     neu_prob = np.around(confidence[0][1]*100, 2)
     pos_prob = np.around(confidence[0][2]*100, 2)
 
+    pred_text0 = 'Your text:'
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
     head_text = 'Probabilities:'
     pred_text2 = 'Positive:  {}%'.format(pos_prob)
@@ -137,7 +138,7 @@ def predict():
     plt.cla()
     plt.close(fig)
 
-    return render_template('index.html', your_text = input_text, prediction_text = pred_text1, bottom_header = head_text, neg_text = pred_text4, neu_text = pred_text3, 
+    return render_template('index.html', your_text_header=pred_text0,  your_text = input_text, prediction_text = pred_text1, bottom_header = head_text, neg_text = pred_text4, neu_text = pred_text3, 
         pos_text = pred_text2, url='static/images/' + new_graph_name)
 
 if __name__ == '__main__':
