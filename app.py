@@ -5,6 +5,7 @@ import string
 from num2words import num2words
 import matplotlib.pyplot as plt
 import time
+import os
 
 
 from sklearn.feature_extraction.text import CountVectorizer
@@ -117,9 +118,9 @@ def predict():
 
     pred_text1 = 'The Predicted Sentiment is: {}'.format(output)
     head_text = 'Probabilities:'
-    pred_text2 = 'Positive: {}%'.format(pos_prob)
-    pred_text3 = 'Neutral: {}%'.format(neu_prob)
-    pred_text4 = 'Negative: {}%'.format(neg_prob)
+    pred_text2 = 'Positive:  {}%'.format(pos_prob)
+    pred_text3 = 'Neutral:  {}%'.format(neu_prob)
+    pred_text4 = 'Negative:  {}%'.format(neg_prob)
 
     heights = [pos_prob, neu_prob, neg_prob]
     bars = ('Positive', 'Neutral', 'Negative')
@@ -129,7 +130,12 @@ def predict():
     plt.tight_layout(pad=0)
     
     new_graph_name = "graph" + str(time.time()) + ".png"
+    for filename in os.listdir('static/images'):
+        if filename.startswith('graph'): 
+            os.remove('static/images/' + filename)
     plt.savefig('static/images/' + new_graph_name, bbox_inches='tight')
+    plt.cla()
+    plt.close(fig)
 
     return render_template('index.html', your_text = input_text, prediction_text = pred_text1, bottom_header = head_text, neg_text = pred_text4, neu_text = pred_text3, 
         pos_text = pred_text2, url='static/images/' + new_graph_name)
