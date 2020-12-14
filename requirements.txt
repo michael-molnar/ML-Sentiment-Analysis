@@ -11,3 +11,4 @@ matplotlib>=1.4.3
 pandas>=0.19
 regex==2020.6.8
 num2words==0.5.10
+snowballstemmer==2.0.0

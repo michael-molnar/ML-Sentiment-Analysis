@@ -1,8 +1,15 @@
+"""
+Michael Molnar - 100806823
+In this module I will build my Flask App for deployment.  This will be 
+combined with the index.html file to be hosted on Heroku.  
+"""
+
 import pandas as pd
 import numpy as np
 import re
 import string
 from num2words import num2words
+from nltk.stem import SnowballStemmer
 import matplotlib.pyplot as plt
 import time
 import os
@@ -14,7 +21,9 @@ from sklearn.linear_model import LogisticRegression
 from flask import Flask, request, jsonify, render_template 
 import pickle
 
+# Create the flask app
 app = Flask(__name__)
+# Import model and vectorizer from model.py
 model = pickle.load(open('model.pkl', 'rb'))
 vectorizer = pickle.load(open('vector.pkl', 'rb'))
 
@@ -85,6 +94,15 @@ def remove_stopwords(input):
     no_stop = ' '.join(no_stop)
     return no_stop
 
+# Function to stem text
+def stem_text(input):
+    stemmer = SnowballStemmer('english')
+    text = input.split()
+    words = ""
+    for i in text:
+        words += (stemmer.stem(i))+' '
+    return words 
+
 """
 Next, I combine all of these into one function to process text for prediction.
 """
@@ -96,6 +114,7 @@ def process_input(text):
     text = replace_numbers(text)
     text = remove_punctuation(text)
     text = remove_stopwords(text)
+    text = stem_text(text)
     return text
 
 @app.route('/')
